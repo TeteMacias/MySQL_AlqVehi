@@ -17,3 +17,11 @@ SELECT*FROM CALIFICACION;
 /*Extraccion de datos de tabla valorizacion_cliente*/
 SELECT CodRevs, valorizacionAlCliente
 FROM registrorevision;
+
+/*---------Consultas hecho datamart---------------*/
+/*Extraccion de datos de las tablas dimensiones para la tabla hecho*/
+select
+lu.Ciudad, cal.Categoria, veh.tipoVehiculo
+FROM RESERVA AS res
+join CALIFICACION AS cal ON (res.IDcalificacionpk=cal.IDcalificacion)
+join LUGAR AS lu ON (res.IDsitiopk=lu.IDsitio) join VEHICULO as veh on (res.CodiVehicpk=veh.CodiVehic)
