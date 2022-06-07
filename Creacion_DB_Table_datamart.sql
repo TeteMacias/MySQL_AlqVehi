@@ -24,13 +24,6 @@ IDcalificacion integer primary key not null,
 categoria varchar (40) Not null
 );
 
-/*==============================================================*/
-/* Table: DIM_VALORIZACION_CLIENTE                                     */
-/*==============================================================*/
-create table DIM_VALORIZACION_CLIENTE(
-CodRevs integer primary key not null,
-valorizacionAlCliente smallint Not null
-);
 
 /*==============================================================*/
 /* Table: DIM_CARACTERISTICA_VEHICULO                                     */
@@ -48,7 +41,9 @@ create table HEC_SATISFACCION(
 IDsitio integer not null,
 IDperiodo integer not null,
 IDcalificacion integer not null,
-CodRevs integer not null,
 CodiVehic integer not null,
-primary key (IDsitio, IDperiodo, IDcalificacion, CodRevs, CodiVehic)
+foreign key (IDsitio) references DIM_LUGAR (IDsitio),
+foreign key (IDperiodo) references DIM_TIEMPO (IDperiodo),
+foreign key (IDcalificacion) references DIM_CALIFICACION_RESERVA  (IDcalificacion),
+foreign key (CodiVehic) references DIM_CARACTERISTICA_VEHICULO (CodiVehic)
 );
