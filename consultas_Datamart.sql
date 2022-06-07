@@ -14,10 +14,6 @@ select * from PERIODORESERVA;
 /*Extraccion de datos de tabla calificacion_reserva*/
 SELECT*FROM CALIFICACION;
 
-/*Extraccion de datos de tabla valorizacion_cliente*/
-SELECT CodRevs, valorizacionAlCliente
-FROM registrorevision;
-
 /*---------Consultas hecho datamart---------------*/
 /*Extraccion de datos de las tablas dimensiones para la tabla hecho*/
 select
@@ -27,7 +23,7 @@ join CALIFICACION AS cal ON (res.IDcalificacionpk=cal.IDcalificacion)
 join LUGAR AS lu ON (res.IDsitiopk=lu.IDsitio) join VEHICULO as veh on (res.CodiVehicpk=veh.CodiVehic)
 
 /*---------Consultas general hecho datamart---------------*/
-/*Extraccion de datos de las tablas dimensiones para la tabla hecho donde se calcula la satisfacción de categoría Excelente en el año 2020*/
+/*Extraccion de datos de las tablas dimensiones para la tabla hecho donde se calcula la satisfacción de categoría Excelente en periodo de tiempo corto o largo*/
 select
 lu.Ciudad, cal.Categoria, veh.tipoVehiculo
 FROM RESERVA AS res
