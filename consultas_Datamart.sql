@@ -25,3 +25,12 @@ lu.Ciudad, cal.Categoria, veh.tipoVehiculo
 FROM RESERVA AS res
 join CALIFICACION AS cal ON (res.IDcalificacionpk=cal.IDcalificacion)
 join LUGAR AS lu ON (res.IDsitiopk=lu.IDsitio) join VEHICULO as veh on (res.CodiVehicpk=veh.CodiVehic)
+
+/*---------Consultas general hecho datamart---------------*/
+/*Extraccion de datos de las tablas dimensiones para la tabla hecho donde se calcula la satisfacción de categoría Excelente en el año 2020*/
+select
+lu.Ciudad, cal.Categoria, veh.tipoVehiculo
+FROM RESERVA AS res
+join CALIFICACION AS cal ON (res.IDcalificacionpk=cal.IDcalificacion) 
+join LUGAR AS lu ON (res.IDsitiopk=lu.IDsitio) join VEHICULO as veh 
+on (res.CodiVehicpk=veh.CodiVehic) where cal.Categoria="EXCELENTE"
